@@ -1,5 +1,3 @@
-# Dependencies for email validation
-python-dotenv
-# dnspython
-# validators
+google-adk
+a2a-sdk
 

@@ -1,4 +1,3 @@
-# Add dependencies for watchlist screening
-python-dotenv
-# requests
+google-adk
+a2a-sdk
 

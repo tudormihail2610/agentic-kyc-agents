@@ -1,5 +1,3 @@
-# Dependencies for document processing
-python-dotenv
-# pillow
-# pytesseract
+google-adk
+a2a-sdk
 

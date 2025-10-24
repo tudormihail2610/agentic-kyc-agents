@@ -1,4 +1,3 @@
-# Dependencies for email composition
-python-dotenv
-# jinja2
+google-adk
+a2a-sdk
 

@@ -1,5 +1,3 @@
-# Dependencies for sending emails
-python-dotenv
-# smtplib (stdlib)
-# requests (for provider APIs)
+google-adk
+a2a-sdk
 

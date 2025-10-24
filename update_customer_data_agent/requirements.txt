@@ -1,5 +1,3 @@
-# Dependencies for database/CRM access
-python-dotenv
-# sqlalchemy
-# requests
+google-adk
+a2a-sdk
 
