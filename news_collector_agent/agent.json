@@ -1,0 +1,35 @@
+{
+  "capabilities": {},
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "description": "Uses Google Search to collect news articles and summarizes them.",
+  "name": "news-collector-agent",
+  "skills": [
+    {
+      "id": "news-search",
+      "name": "News Search",
+      "description": "Searches for recent news articles using Google Search.",
+      "tags": [
+        "news",
+        "search",
+        "collection"
+      ]
+    },
+    {
+      "id": "news-summarization",
+      "name": "News Summarization",
+      "description": "Summarizes collected news articles into concise summaries.",
+      "tags": [
+        "summarization",
+        "nlp",
+        "reporting"
+      ]
+    }
+  ],
+  "url": "http://localhost:9092",
+  "version": "1.0.0"
+}

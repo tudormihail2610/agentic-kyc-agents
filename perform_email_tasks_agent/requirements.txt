@@ -1,0 +1,5 @@
+# Dependencies for sending emails
+python-dotenv
+# smtplib (stdlib)
+# requests (for provider APIs)
+

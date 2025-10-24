@@ -1,0 +1,5 @@
+# Dependencies for database/CRM access
+python-dotenv
+# sqlalchemy
+# requests
+

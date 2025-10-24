@@ -1,0 +1,13 @@
+{
+  "capabilities": {},
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "description": "Validates email addresses for format and deliverability.",
+  "name": "validate-email-agent",
+  "skills": [
+    { "id": "email-format", "name": "Email Format Check", "description": "Validates email syntax.", "tags": ["email", "validation"] }
+  ],
+  "url": "http://localhost:9092",
+  "version": "1.0.0"
+}
+

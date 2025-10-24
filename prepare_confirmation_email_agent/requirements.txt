@@ -1,0 +1,4 @@
+# Dependencies for email composition
+python-dotenv
+# jinja2
+

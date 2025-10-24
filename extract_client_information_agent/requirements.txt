@@ -1,0 +1,5 @@
+# Dependencies for NLP/extraction
+python-dotenv
+# spacy
+# transformers
+

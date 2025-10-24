@@ -1,0 +1,4 @@
+# Add runtime dependencies for validate-name-address-agent here
+python-dotenv
+# google-genai  # add if/when using Google GenAI SDK
+

@@ -1,0 +1,4 @@
+# Add dependencies for watchlist screening
+python-dotenv
+# requests
+

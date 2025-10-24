@@ -1,0 +1,13 @@
+{
+  "capabilities": {},
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "description": "Extracts structured client information from documents or text inputs.",
+  "name": "extract-client-information-agent",
+  "skills": [
+    { "id": "ner-extraction", "name": "Information Extraction", "description": "Extracts names, addresses, IDs, and other fields.", "tags": ["nlp", "extraction"] }
+  ],
+  "url": "http://localhost:9092",
+  "version": "1.0.0"
+}
+

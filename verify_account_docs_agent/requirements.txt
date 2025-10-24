@@ -1,0 +1,5 @@
+# Dependencies for document processing
+python-dotenv
+# pillow
+# pytesseract
+

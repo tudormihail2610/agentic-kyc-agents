@@ -1,0 +1,5 @@
+# Dependencies for email validation
+python-dotenv
+# dnspython
+# validators
+
