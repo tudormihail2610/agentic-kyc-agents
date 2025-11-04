@@ -32,6 +32,67 @@ default_generate_cfg = types.GenerateContentConfig(
     ],
 )
 
+def existing_client(first_name: str, last_name: str) -> dict:
+    """
+    Retrieve details of an existing client based on their first and last name.
+
+    Parameters:
+        first_name (str): The first name of the client.
+        last_name (str): The last name of the client.
+
+    Returns:
+        dict: A dictionary containing the client's details.
+    """
+    return {
+        "first_name": "Keith",
+        "last_name": "Rodgers",
+        "address": "1234 K ST NYC NY 10001",
+        "sex": "m",
+        "date_of_birth": "01/12/85",
+        "nationality": "usa",
+        "height": "5'07\"",
+        "weight": "130",
+        "eye_color": "brn",
+        "date_issued": "05/01/15",
+        "date_expires": "05/31/15",
+        "issuing_agency": "uav control",
+        "email_address": "keith.rodgers.174813974139@yahoo.com"
+    }
+
+def verify_missing_documents(first_name: str, last_name: str) -> dict:
+    """
+    Verify if there are any missing documents for the client based on their first and last name.
+
+    Parameters:
+        first_name (str): The first name of the client.
+        last_name (str): The last name of the client.
+
+    Returns:
+        dict: A dictionary indicating no missing documents.
+    """
+    return {
+        "first_name": first_name,
+        "last_name": last_name,
+        "missing_documents": []
+    }
+
+def update_client_info(first_name: str, last_name: str) -> dict:
+    """
+    Update the client's information based on their first and last name.
+
+    Parameters:
+        first_name (str): The first name of the client.
+        last_name (str): The last name of the client.
+
+    Returns:
+        dict: A dictionary indicating the update was successful.
+    """
+    return {
+        "first_name": first_name,
+        "last_name": last_name,
+        "status": "Update successful"
+    }
+
 # Remote A2A agent factory for the client verification agent
 client_verification_remote_agent = lambda: RemoteA2aAgent(
     name = "client_analysis_agent",
@@ -70,6 +131,7 @@ Privacy & Safety:
 
 If inputs are ambiguous or missing required fields (for example, missing client_id for document checks), ask for the missing data before proceeding.
 """,
+    tools=[existing_client, update_client_info, verify_missing_documents],
     planner = default_planner,
     generate_content_config = default_generate_cfg,
 )

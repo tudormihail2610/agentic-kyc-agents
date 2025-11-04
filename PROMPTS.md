@@ -1,21 +1,9 @@
 # Laboratory example prompts
 
-### Scenario 1: No workflow orchestration
+### Scenario 1: Client Analysis Agent
 
 ``` bash
 
-Can you create a summary of latest news for Nvidia
-```
+Current email address is keith.rodgers.41341@yahoo.com
 
-```bash
-
-Please send me the summary on email from my gmail account at email@email.com
-```
-
-### Scenario 2: Workflow orchestration
-
-```bash
-
-Can you create a summary of latest news for Nvidia and send it on email from my gmail account at
-email@email.com
 ```
