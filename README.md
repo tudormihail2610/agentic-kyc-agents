@@ -15,4 +15,10 @@ Repository for AI agents for KYC process
 - perform_email_tasks_agent
 - extract_client_information_agent
 
+# MCPs
+
+```bash
+
+npx @modelcontextprotocol/inspector
+```
 
