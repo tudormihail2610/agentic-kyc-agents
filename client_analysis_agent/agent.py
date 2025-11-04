@@ -34,14 +34,14 @@ default_generate_cfg = types.GenerateContentConfig(
 
 # Remote A2A agent factory for the client verification agent
 client_verification_remote_agent = lambda: RemoteA2aAgent(
-    name = "client-analysis-agent",
+    name = "client_analysis_agent",
     description = "Remote A2A wrapper exposing the client verification capabilities (verify_name, verify_email, check_documents) defined in agent.json",
     agent_card = ("client_analysis_agent.json")
 )
 
 # Root Agent: client-analysis-agent
 root_agent = Agent(
-    name = "client-analysis-agent",
+    name = "client_analysis_agent",
     model = os.getenv("MODEL"),
     description = "Agent that validates client name and email, and checks whether required client documents are present and completed.",
     instruction="""
