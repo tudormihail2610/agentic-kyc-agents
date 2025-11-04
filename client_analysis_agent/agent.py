@@ -39,9 +39,9 @@ client_verification_remote_agent = lambda: RemoteA2aAgent(
     agent_card = ("client_analysis_agent.json")
 )
 
-# Root Agent: client-verification-agent
+# Root Agent: client-analysis-agent
 root_agent = Agent(
-    name = "client-verification-agent",
+    name = "client-analysis-agent",
     model = os.getenv("MODEL"),
     description = "Agent that validates client name and email, and checks whether required client documents are present and completed.",
     instruction="""
