@@ -55,10 +55,16 @@ analysis_and_guard = SequentialAgent(
     sub_agents=[client_verification_remote_agent(), validation_and_interpol]
 )
 
+email_sending = LoopAgent(
+    name="email_sending_loop",
+    sub_agents=[client_comms_remote_agent(), comms_approval_remote_agent()],
+    max_iterations=3
+)
+
 # top-level KYC workflow as requested
 kyc_workflow = SequentialAgent(
     name="kyc_workflow_agent",
-    sub_agents=[analysis_and_guard, client_comms_remote_agent(), comms_approval_remote_agent()]
+    sub_agents=[analysis_and_guard, email_sending]
 )
 
 root_agent = Agent(
