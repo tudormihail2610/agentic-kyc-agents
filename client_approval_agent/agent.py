@@ -3,11 +3,11 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.adk.agents import Agent
+from google.adk.agents.remote_a2a_agent import RemoteA2aAgent
 from google.adk.planners import BuiltInPlanner
 from google.genai import types
 import re
 from typing import List, Optional, Dict, Any
-import itertools
 
 load_dotenv()
 
@@ -159,49 +159,12 @@ def check_documents(client_id: str, required_documents: Optional[List[str]] = No
 #     agent_card = ("client-approval-agent.json")
 # )
 
-# Refactor: instead of a single RemoteA2aAgent, provide a pool of client approval agents created in a loop.
-from typing import List
-
-def create_client_approval_pool(size: int = 4) -> List[Agent]:
-    """
-    Create a pool of client approval worker agents.
-
-    Each worker is a lightweight Agent configured with the same validation tools and a clear
-    description. The pool can be used by an orchestrator to distribute approvals in round-robin
-    or other scheduling strategies.
-
-    Returns a list of Agent instances.
-    """
-    pool: List[Agent] = []
-    # Local instruction for workers (kept concise to avoid duplication)
-    worker_instruction = (
-        "You are a Client Approval Worker. Use the provided tools (verify_name, verify_email, check_documents) "
-        "to validate updated client information. When uncertain, take the conservative path and provide clear reasons."
-    )
-
-    for i in range(size):
-        worker = Agent(
-            name = f"client_approval_worker_{i+1}",
-            model = os.getenv("MODEL"),
-            description = f"Client approval worker {i+1} that validates updated client information.",
-            instruction = worker_instruction,
-            tools = [verify_name, verify_email, check_documents],
-            planner = default_planner,
-            generate_content_config = default_generate_cfg,
-        )
-        pool.append(worker)
-
-    return pool
-
-# Instantiate a default pool of 4 workers
-client_approval_agents_pool = create_client_approval_pool(4)
-
-# Round-robin accessor for the pool
-_approval_agent_cycle = itertools.cycle(client_approval_agents_pool)
-
-def get_next_client_approval_agent() -> Agent:
-    """Return the next client approval worker from the pool in round-robin order."""
-    return next(_approval_agent_cycle)
+# Restore simple RemoteA2aAgent factory and remove the manual pool implementation.
+client_approval_remote_agent = lambda: RemoteA2aAgent(
+    name = "client_approval_agent",
+    description = "Remote A2A wrapper that validates the updated data for the client",
+    agent_card = ("client-approval-agent.json")
+)
 
 # Root agent definition with the validation tools attached
 root_agent = Agent(
