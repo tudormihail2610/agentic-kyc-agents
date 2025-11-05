@@ -39,14 +39,7 @@ EMAIL_MCP_URL = os.getenv("EMAIL_MCP", "http://localhost:8080/mcp")
 email_mcp_toolset = MCPToolset(
     connection_params=StreamableHTTPConnectionParams(url=EMAIL_MCP_URL),
     tool_filter=[
-        'mark_as_read',
         'create_email_draft',
-        'reply_to_email_draft',
-        'delete_email',
-        'read_email',
-        'list_emails',
-        'get_email_flags',
-        'get_email_skips'
     ]
 )
 
@@ -69,14 +62,7 @@ root_agent = Agent(
     **TOOLS AVAILABLE:**
     You have access to following actions (for both Gmail and Yahoo, as specified per tool):
     
-    - `mark_as_read` – Mark specified email as read.
     - `create_email_draft` – Create an email draft for the specified provider.
-    - `reply_to_email_draft` – Create a reply draft to an existing email, without sending it.
-    - `delete_email` – Delete specified email.
-    - `read_email` – Retrieve contents of a specific email.
-    - `list_emails` – Get lists of emails (by type: seen, unseen, all).
-    - `get_email_flags` – Fetch status flags on emails (seen, deleted, etc.). Most comprehensive flag list available.
-    - `get_email_skips` – List senders or addresses currently on the skip list. Leave these emails alone as unread.
     
     **GENERAL USAGE:**
     - Always employ reasoning before taking any action: first, analyze the available information, cross-reference skips/spam lists, and only then choose whether to summarize, mark as read, delete, or classify relevance.
