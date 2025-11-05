@@ -22,3 +22,23 @@ Repository for AI agents for KYC process
 npx @modelcontextprotocol/inspector
 ```
 
+```bash
+adk deploy cloud_run --project versatile-hub-351115 --region us-central1 --service_name client-analysis-agent --a2a client_analysis_agent
+```
+
+
+```bash
+adk deploy cloud_run --project versatile-hub-351115 --region us-central1 --service_name client-approval-agent --a2a client_approval_agent
+```
+
+```bash
+adk deploy cloud_run --project versatile-hub-351115 --region us-central1 --service_name client-comms-agent --a2a client_comms_agent
+```
+
+```bash
+adk deploy cloud_run --project versatile-hub-351115 --region us-central1 --service_name comms-approval-agent --a2a comms_approval_agent
+```
+
+```bash
+adk deploy cloud_run --project versatile-hub-351115 --region us-central1 --service_name interpol-guard-agent --a2a interpol_guard_agent
+```
