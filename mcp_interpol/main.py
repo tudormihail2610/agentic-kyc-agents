@@ -36,7 +36,18 @@ async def init_mcp():
     spec = load_openapi_spec(OPENAPI_SPEC_PATH)
     log_openapi_spec_info(spec)
 
-    client = httpx.AsyncClient(base_url=API_BASE_URL)
+    client = httpx.AsyncClient(base_url=API_BASE_URL, headers={"Cookie": '" "'})
+
+    async def log_request_headers(request: httpx.Request):
+        # Convert header keys to camel case
+        # request.headers = {key.title(): value for key, value in request.headers.items()}
+        if "User-Agent" in request.headers:
+            del request.headers["User-Agent"]  # Remove the User-Agent header
+        logger.info(f"Request Headers: {request.headers}")
+
+    client.event_hooks = {
+        "request": [log_request_headers]
+    }
 
     mcp = FastMCP.from_openapi(
         openapi_spec=spec,
@@ -48,6 +59,32 @@ async def init_mcp():
     async def health():
         """Health check endpoint."""
         return {"status": "healthy"}
+
+    @mcp.tool()
+    async def debug():
+        """Debug endpoint to test connectivity."""
+        try:
+            response = await client.get("/red?forename=MAX&name=Mustermann&nationality=DE&ageMax=120&ageMin=18&sexId=F&arrestWarrantCountryId=DE&page=1&resultPerPage=200")
+            response.raise_for_status()  # Raise an error for HTTP status codes >= 400
+            return {
+                "status_code": response.status_code,
+                "response": response.json() if response.content else {}
+            }
+        except httpx.RequestError as exc:
+            return {
+                "error": f"An error occurred while making the request: {str(exc)}"
+            }
+        except httpx.HTTPStatusError as exc:
+            return {
+                "error": f"HTTP error occurred: {str(exc)}",
+                "status_code": exc.response.status_code,
+                "response": exc.response.text
+            }
+        except ValueError as exc:
+            return {
+                "error": f"Failed to parse JSON response: {str(exc)}",
+                "response_text": response.text if 'response' in locals() else None
+            }
 
     return mcp, client
 
