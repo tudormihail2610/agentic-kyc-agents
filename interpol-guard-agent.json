@@ -7,7 +7,7 @@
   "skills": [
     { "id": "email-format", "name": "Email Format Check", "description": "Validates email syntax.", "tags": ["email", "validation"] }
   ],
-  "url": "http://localhost:9092",
+  "url": "http://localhost:9095",
   "version": "1.0.0"
 }
 

@@ -41,24 +41,24 @@ validator_loop = LoopAgent(
     name="client_validator_loop",
     sub_agents=[client_approval_remote_agent()],
     max_iterations=4
-).to_agent()
+)
 
 # inner sequential: analysis then repeated validation
-analysis_then_validation = SequentialAgent(
+validation_and_interpol = ParallelAgent(
     name="analysis_then_validation",
-    sub_agents=[client_verification_remote_agent(), validator_loop]
+    sub_agents=[interpol_remote_agent(), validator_loop]
 )
 
 # parallel: run analysis+validation sequence in parallel with interpol guard
-analysis_and_guard_parallel = ParallelAgent(
+analysis_and_guard = SequentialAgent(
     name="analysis_and_guard_parallel",
-    sub_agents=[analysis_then_validation, interpol_remote_agent()]
+    sub_agents=[client_verification_remote_agent(), validation_and_interpol]
 )
 
 # top-level KYC workflow as requested
 kyc_workflow = SequentialAgent(
     name="kyc_workflow_agent",
-    sub_agents=[analysis_and_guard_parallel, client_comms_remote_agent(), comms_approval_remote_agent()]
+    sub_agents=[analysis_and_guard, client_comms_remote_agent(), comms_approval_remote_agent()]
 )
 
 root_agent = Agent(
@@ -71,7 +71,7 @@ root_agent = Agent(
     Always delegate tasks to the appropriate sub-agent to complete the work. Use your best judgement to determine which 
     sub-agent is best suited for each task.
 
-    You are reponsible dor delegating tasks to the following agents:
+    You are responsible dor delegating tasks to the following agents:
     - client_analysis_agent
     - client_approval_agent
     - client_comms_agent

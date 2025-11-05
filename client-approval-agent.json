@@ -1,7 +1,5 @@
 {
-  "capabilities": {
-    "validate": true
-  },
+  "capabilities": {},
   "defaultInputModes": ["application/json"],
   "defaultOutputModes": ["application/json"],
   "description": "Top-level manifest for client-approval-agent. Validates client analysis outputs; intended to be run in a 4-instance LoopAgent configuration.",

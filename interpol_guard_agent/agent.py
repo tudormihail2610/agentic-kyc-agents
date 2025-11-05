@@ -21,7 +21,7 @@ client = genai.Client(
 )
 
 default_planner = BuiltInPlanner(
-    thinking_config=types.ThinkingConfig(include_thoughts=True)
+    thinking_config = types.ThinkingConfig(include_thoughts = True)
 )
 
 default_generate_cfg = types.GenerateContentConfig(
@@ -46,7 +46,7 @@ interpol_mcp_toolset = MCPToolset(
 interpol_remote_agent = lambda: RemoteA2aAgent(
     name="interpol_agent",
     description="You are an Interpol agent tasked with efficiently checking individuals against the Interpol MCP API toolset. Your primary objectives are to retrieve and analyze red, yellow, and UN notices, fetch detailed information, and process images associated with these notices. You will use the tools provided by the Interpol MCP API to ensure accurate and efficient handling of requests.",
-    agent_card=("interpol-agent.json")
+    agent_card="interpol-guard-agent.json"
 )
 
 root_agent = Agent(
@@ -78,8 +78,8 @@ root_agent = Agent(
 
     # Output Format
 
-    - Important: Never output code.
-    - Output should be as instructed each time, maybe a list of bullet points or result output.
+    - Important: Never output code. Always respond in one sentence as instructed.
+    - Output simple concise. First Name, Last Name ALERT HAS RED notices or NEGATIVE RESULTS.
     - Possible markdown formatting—output as instructed each time.
 
     # Examples
@@ -106,7 +106,5 @@ root_agent = Agent(
     """,
     tools=[
         interpol_mcp_toolset  # All Interpol MCP tools available
-    ],
-    planner=default_planner,
-    generate_content_config=default_generate_cfg,
+    ]
 )
