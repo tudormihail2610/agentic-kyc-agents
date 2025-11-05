@@ -7,7 +7,7 @@
   "skills": [
     { "id": "email-format", "name": "Email Format Check", "description": "Validates email syntax.", "tags": ["email", "validation"] }
   ],
-  "url": "http://localhost:9095",
+  "url": "https://interpol-guard-agent-612599502378.us-central1.run.app/a2a/interpol_guard_agent",
   "version": "1.0.0"
 }
 

@@ -13,6 +13,6 @@
     }
   ],
   "instances": 4,
-  "url": "http://localhost:9092",
+  "url": "https://client-approval-agent-612599502378.us-central1.run.app/a2a/client_approval_agent",
   "version": "1.0.0"
 }

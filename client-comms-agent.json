@@ -71,6 +71,6 @@
       ]
     }
   ],
-  "url": "http://localhost:9093",
+  "url": "https://client-comms-agent-612599502378.us-central1.run.app/a2a/client_comms_agent",
   "version": "1.0.0"
 }

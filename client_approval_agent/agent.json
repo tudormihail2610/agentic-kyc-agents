@@ -1,7 +1,5 @@
 {
-  "capabilities": {
-    "validate": true
-  },
+  "capabilities": {},
   "defaultInputModes": ["application/json"],
   "defaultOutputModes": ["application/json"],
   "description": "Validates outputs from client_analysis_agent and returns an approval decision (approve, deny, review) or structured invalid response. Designed to run as 4 parallel instances in a LoopAgent.",

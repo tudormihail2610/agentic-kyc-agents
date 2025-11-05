@@ -61,6 +61,6 @@
       ]
     }
   ],
-  "url": "http://localhost:9094",
+  "url": "https://comms-approval-agent-612599502378.us-central1.run.app/a2a/comms_approval_agent",
   "version": "1.0.0"
 }

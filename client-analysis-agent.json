@@ -30,6 +30,6 @@
       "tags": ["error", "logging"]
     }
   ],
-  "url": "http://localhost:9091",
+  "url": "https://client-analysis-agent-612599502378.us-central1.run.app/a2a/client_analysis_agent",
   "version": "1.0.0"
 }
