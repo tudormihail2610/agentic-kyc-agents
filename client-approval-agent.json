@@ -1,0 +1,20 @@
+{
+  "capabilities": {
+    "validate": true
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "description": "Top-level manifest for client-approval-agent. Validates client analysis outputs; intended to be run in a 4-instance LoopAgent configuration.",
+  "name": "client-approval-agent",
+  "skills": [
+    {
+      "id": "validate-client",
+      "name": "Validate Client",
+      "description": "Validates client analysis output and returns an approval decision or flags for review.",
+      "tags": ["approval", "validation"]
+    }
+  ],
+  "instances": 4,
+  "url": "http://localhost:9092",
+  "version": "1.0.0"
+}

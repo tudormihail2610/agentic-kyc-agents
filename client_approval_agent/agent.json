@@ -1,13 +1,20 @@
 {
-  "capabilities": {},
-  "defaultInputModes": ["text/plain"],
-  "defaultOutputModes": ["text/plain"],
-  "description": "Performs email-related tasks such as sending, scheduling, and status checks.",
-  "name": "perform-email-tasks-agent",
+  "capabilities": {
+    "validate": true
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "description": "Validates outputs from client_analysis_agent and returns an approval decision (approve, deny, review) or structured invalid response. Designed to run as 4 parallel instances in a LoopAgent.",
+  "name": "client-approval-agent",
   "skills": [
-    { "id": "send-email", "name": "Send Email", "description": "Sends composed emails via SMTP or provider APIs.", "tags": ["email", "send"] }
+    {
+      "id": "validate-client",
+      "name": "Validate Client",
+      "description": "Validate client analysis output and return an approval decision or flag for manual review.",
+      "tags": ["approval", "validation", "client"]
+    }
   ],
+  "instances": 4,
   "url": "http://localhost:9092",
   "version": "1.0.0"
 }
-

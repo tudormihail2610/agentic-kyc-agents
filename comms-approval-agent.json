@@ -1,0 +1,66 @@
+{
+  "capabilities": {},
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "description": "An advanced email control agent that sends and analyzes emails using the Gmail Digest MCP API toolset. It classifies relevance, manages mailbox state, compares emails to spam/skip lists, and handles errors, supporting both Gmail and Yahoo providers.",
+  "name": "comms-approval-agent",
+  "skills": [
+    {
+      "id": "email-formatting",
+      "name": "Email Formatting",
+      "description": "Formats summaries and content into professional email templates.",
+      "tags": [
+        "email",
+        "formatting",
+        "communication"
+      ]
+    },
+    {
+      "id": "email-sending",
+      "name": "Email Sending",
+      "description": "Sends formatted emails to specified recipients using configured services.",
+      "tags": [
+        "email",
+        "sending",
+        "communication"
+      ]
+    },
+    {
+      "id": "email-summarization",
+      "name": "Email Summarization",
+      "description": "Reads and summarizes email content, extracting key information for efficient triage.",
+      "tags": [
+        "email",
+        "summarization",
+        "analysis"
+      ]
+    },
+    {
+      "id": "spam-skip-management",
+      "name": "Spam/Skip List Management",
+      "description": "Checks and manages emails against spam and skip lists, ensuring safe and efficient processing.",
+      "tags": [
+        "email",
+        "spam",
+        "skip",
+        "management"
+      ]
+    },
+    {
+      "id": "error-handling",
+      "name": "Error Handling",
+      "description": "Handles and logs errors gracefully according to API instructions.",
+      "tags": [
+        "email",
+        "error",
+        "handling"
+      ]
+    }
+  ],
+  "url": "http://localhost:9091",
+  "version": "1.0.0"
+}
