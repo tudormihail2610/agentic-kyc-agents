@@ -15,13 +15,13 @@ current_environment = os.getenv("ENV")
 project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
 
 client = genai.Client(
-    vertexai = True,
-    project = project_id,
-    location = os.getenv("GOOGLE_CLOUD_LOCATION"),
+    vertexai=True,
+    project=project_id,
+    location=os.getenv("GOOGLE_CLOUD_LOCATION"),
 )
 
 default_planner = BuiltInPlanner(
-    thinking_config = types.ThinkingConfig(include_thoughts = True)
+    thinking_config=types.ThinkingConfig(include_thoughts=True)
 )
 
 default_generate_cfg = types.GenerateContentConfig(
@@ -37,14 +37,16 @@ INTERPOL_MCP_URL = os.getenv("INTERPOL_MCP", "http://localhost:8090/mcp")
 
 # Set up the MCP Toolset for all email control tools (allow all except get_email_possible_spam)
 interpol_mcp_toolset = MCPToolset(
-    connection_params=StreamableHTTPConnectionParams(url=INTERPOL_MCP_URL)
+    connection_params=StreamableHTTPConnectionParams(url=INTERPOL_MCP_URL),
+    tool_filter=[
+        'check_user'
+    ]
 )
 
-
 interpol_remote_agent = lambda: RemoteA2aAgent(
-    name = "interpol_agent",
-    description = "You are an Interpol agent tasked with efficiently checking individuals against the Interpol MCP API toolset. Your primary objectives are to retrieve and analyze red, yellow, and UN notices, fetch detailed information, and process images associated with these notices. You will use the tools provided by the Interpol MCP API to ensure accurate and efficient handling of requests.",
-    agent_card = ("interpol-agent.json")
+    name="interpol_agent",
+    description="You are an Interpol agent tasked with efficiently checking individuals against the Interpol MCP API toolset. Your primary objectives are to retrieve and analyze red, yellow, and UN notices, fetch detailed information, and process images associated with these notices. You will use the tools provided by the Interpol MCP API to ensure accurate and efficient handling of requests.",
+    agent_card=("interpol-agent.json")
 )
 
 root_agent = Agent(
@@ -59,15 +61,7 @@ root_agent = Agent(
     **TOOLS AVAILABLE:**
     You have access to the following actions:
 
-    - `Get_Red_Notices` – Retrieve red notices based on query parameters such as name, nationality, age, etc.
-    - `Get_Red_Notice_Details` – Fetch detailed information about a specific red notice using its ID.
-    - `Get_Red_Notice_Images` – Retrieve images associated with a specific red notice using its ID.
-    - `Get_Yellow_Notices` – Retrieve yellow notices based on query parameters such as name, nationality, age, etc.
-    - `Get_Yellow_Notice_Details` – Fetch detailed information about a specific yellow notice using its ID.
-    - `Get_Yellow_Notice_Images` – Retrieve images associated with a specific yellow notice using its ID.
-    - `Get_UN_Notices` – Retrieve UN notices based on query parameters such as name, UN reference, resolution, etc.
-    - `Get_UN_Notice_Details` – Fetch detailed information about a specific UN notice using its ID and type (persons/entities).
-    - `Get_UN_Notice_Images` – Retrieve images associated with a specific UN notice using its ID and type (persons/entities).
+    - `Check User` – Retrieve red notices based on query parameters such as name, nationality, age, etc.
 
     **GENERAL USAGE:**
     - Always employ reasoning before taking any action: first, analyze the available information, cross-reference query parameters, and only then choose the appropriate tool.
