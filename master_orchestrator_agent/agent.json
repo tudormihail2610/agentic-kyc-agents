@@ -1,0 +1,36 @@
+{
+  "capabilities": {},
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "description": "Coordinates complex workflows and delegates tasks to specialized agents.",
+  "name": "master-agent",
+  "skills": [
+    {
+      "id": "workflow-orchestration",
+      "name": "Workflow Orchestration",
+      "description": "Designs, manages, and executes multi-step workflows by coordinating multiple agents and processes.",
+      "tags": [
+        "workflow",
+        "orchestration",
+        "automation"
+      ]
+    },
+    {
+      "id": "task-delegation",
+      "name": "Task Delegation",
+      "description": "Assigns tasks to appropriate agents or services, ensuring efficient execution and monitoring progress.",
+      "tags": [
+        "delegation",
+        "task-management",
+        "coordination"
+      ]
+    }
+  ],
+  "url": "http://localhost:9093",
+  "version": "1.0.0"
+}
+
