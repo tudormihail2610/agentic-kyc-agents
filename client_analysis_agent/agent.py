@@ -97,7 +97,7 @@ def update_client_info(first_name: str, last_name: str) -> dict:
 client_verification_remote_agent = lambda: RemoteA2aAgent(
     name = "client_analysis_agent",
     description = "Remote A2A wrapper exposing the client verification capabilities (verify_name, verify_email, check_documents) defined in agent.json",
-    agent_card = ("client_analysis_agent.json")
+    agent_card = ("client-analysis-agent.json")
 )
 
 # Root Agent: client-analysis-agent

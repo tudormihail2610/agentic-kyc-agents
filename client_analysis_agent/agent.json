@@ -86,7 +86,7 @@
     "text/plain"
   ],
   "description": "Agent that validates client name and email, and checks whether required client documents are present and completed.",
-  "name": "client_analysis_agent",
+  "name": "client-analysis-agent",
   "skills": [
     {
       "id": "client-data-validation",
